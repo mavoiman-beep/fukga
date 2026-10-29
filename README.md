@@ -4,17 +4,27 @@ Aplicación frontend para registrar, listar y editar ventas de una cafetería es
 
 ## Requisitos
 
-- Node.js
+- Node.js 18+
 - npm
 
 ## Instalación
 
-Ejecuta npm install.
+```bash
+npm install
+```
 
-## Desarrollo
+## Ejecutar en desarrollo
 
-Ejecuta npm run dev. En desarrollo, la app usa el backend local en http://localhost:3000.
+```bash
+npm run dev
+```
 
-## Producción
+## Compilar para producción
 
-El frontend usa por defecto la API pública https://backent-98m3.onrender.com. Para cambiarla, configura VITE_API_URL en las variables de entorno de Vercel y vuelve a desplegar. El backend debe estar activo y conectado a su base de datos.
+```bash
+npm run build
+```
+
+En desarrollo, la aplicación consume el backend local en `http://localhost:3000`. En producción usa `https://backent-98m3.onrender.com`.
+
+Puedes reemplazar la URL del backend definiendo `VITE_API_URL` en las variables de entorno del proveedor del frontend (por ejemplo, Vercel), sin una barra final, y volviendo a desplegar. El backend debe estar publicado y tener acceso a la base de datos; `localhost` no es una URL válida para el navegador de producción.
