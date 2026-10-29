@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
-const baseURL = configuredApiUrl
-  ? configuredApiUrl.replace(/\/+$/, '')
+const markdownApiUrl = configuredApiUrl?.match(/^\[[^\]]+\]\((https?:\/\/[^)]+)\)$/)?.[1];
+const apiUrl = markdownApiUrl || configuredApiUrl;
+const baseURL = apiUrl
+  ? apiUrl.replace(/\/+$/, '')
   : import.meta.env.DEV
     ? 'http://localhost:3000'
     : 'https://backent-98m3.onrender.com';
@@ -17,4 +19,4 @@ export function getApiErrorMessage(error) {
     return typeof error.response.data === 'string' ? error.response.data : 'El backend devolvió un error.';
   }
   return 'Ocurrió un error inesperado al comunicarse con el backend.';
-      }
+}
